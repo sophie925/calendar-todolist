@@ -1,0 +1,71 @@
+@use '_theme.scss';
+@use '_common.scss' as common;
+
+.calendar {
+    width: 100%;
+    
+    .header {
+        @include common.flex-column();
+
+        width: 100%;
+        height: 4rem;
+        font-weight: 900;
+        padding: 0 20px;
+
+        &__content {
+            @include common.flex-row(space-between);
+
+            width: 50%;
+            
+            svg {
+                font-size: 2rem;
+            }
+            .date {
+                font-size: 0.8rem;
+            }
+            .month {
+                font-size: 1.5rem;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .days {
+        @include common.flex-grid();
+
+        width: 100%;
+        padding: 20px;
+        
+        .day {
+            background: theme.$main-color;
+            color: white;
+            margin: 0 5px;
+            padding: 6px 0;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 800;
+        }
+    }
+
+    .body {
+        width: 100%;
+        padding: 0 20px;
+
+        .row {
+            @include common.flex-grid();
+
+            height: 100px;
+        }
+        .col {
+            @include common.flex-column(flex-start);
+            
+            &.disabled {
+                color: theme.$gray-color;
+            }
+            &.selected > span{
+                background: linear-gradient(180deg, rgba(0,0,0,0) 60%, theme.$sub-color 40%);
+                width: 25px;
+            }
+        }
+    }
+}
