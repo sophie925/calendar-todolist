@@ -3,9 +3,10 @@ import { startOfMonth, startOfWeek, endOfMonth, endOfWeek, format, isSameMonth, 
 type DateType = {
     currentMonth: Date;
     selectedDate: Date;
+    onClickDate: (day: Date) => void;
 }
 
-const CalendarBody = ({ currentMonth, selectedDate }: DateType) => {
+const CalendarBody = ({ currentMonth, selectedDate, onClickDate }: DateType) => {
     const monthStart = startOfMonth(currentMonth);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
@@ -19,16 +20,17 @@ const CalendarBody = ({ currentMonth, selectedDate }: DateType) => {
     while (date <= endDate) {
         for (let i = 0; i < 7; i++) {
             formattedDate = format(date, 'd');
-            
+            let cloneDate = date;
             days.push(
                 <div
                 className={`col ${
                     !isSameMonth(date, monthStart)
                         ? 'disabled'
                         : isSameDay(date, selectedDate)
-                        ? 'selected': ''
+                        ? 'selected' : ''
                 }`}
                 key={i}
+                onClick={() => onClickDate(cloneDate)}
                 >
                     <span>{formattedDate}</span>
                 </div>
@@ -40,7 +42,7 @@ const CalendarBody = ({ currentMonth, selectedDate }: DateType) => {
         );
         days = [];
     }
-    
+
     return <div className="body">{rows}</div>;
 }
 
