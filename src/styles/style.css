@@ -92,4 +92,27 @@ button {
   margin: auto;
   cursor: pointer;
   box-shadow: 1px 2px 3px rgba(102, 102, 102, 0.5);
+}
+
+.todo {
+  width: 100%;
+}
+.todo .header {
+  display: flex;
+  width: 100%;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+.todo .header .date {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 2rem;
+  font-weight: 900;
+}
+.todo .header .day {
+  font-size: 1rem;
+  font-weight: 500;
+  vertical-align: top;
 }/*# sourceMappingURL=style.css.map */

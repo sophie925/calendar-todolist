@@ -1,0 +1,24 @@
+@use '_theme.scss';
+@use '_common.scss' as common;
+
+.todo {
+    width: 100%;
+
+    .header {
+        display: flex;
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom: 20px;
+
+        .date {
+            @include common.flex-row(center, flex-start);
+            font-size: 2rem;
+            font-weight: 900;
+        }
+        .day {
+            font-size: 1rem;
+            font-weight: 500;
+            vertical-align: top;
+        }
+    }
+}
