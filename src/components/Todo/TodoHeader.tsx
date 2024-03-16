@@ -5,6 +5,7 @@ const TodoHeader = () => {
                 11
                 <span className="day">월요일</span>
             </div>
+            <div className="tasks">할 일 2개 남음</div>
         </div>
     );
 };

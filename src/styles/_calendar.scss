@@ -62,7 +62,7 @@
                 cursor: pointer;
             }
             &.disabled {
-                color: theme.$gray-color;
+                color: theme.$lightgray-color;
             }
             &.selected > span{
                 background: linear-gradient(180deg, rgba(0,0,0,0) 60%, theme.$sub-color 40%);

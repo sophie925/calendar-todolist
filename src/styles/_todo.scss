@@ -5,7 +5,7 @@
     width: 100%;
 
     .header {
-        display: flex;
+        @include common.flex-column(center, flex-start);
         width: 100%;
         padding: 0 20px;
         margin-bottom: 20px;
@@ -14,11 +14,67 @@
             @include common.flex-row(center, flex-start);
             font-size: 2rem;
             font-weight: 900;
+            margin-bottom: 10px;
         }
         .day {
             font-size: 1rem;
             font-weight: 500;
             vertical-align: top;
+        }
+    }
+
+    .body {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .create {
+        @include common.flex-row(flex-start, center);
+        padding: 10px 0;
+        color: theme.$gray-color;
+
+        .add {
+            @include common.flex-row();
+            font-size: 1rem;
+            color: theme.$gray-color;
+            padding: 0;
+        }
+        .plus {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+    }
+    
+    .item {
+        @include common.flex-row(flex-start, center);
+        padding: 12px 0;
+
+        .check {
+            display: flex;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            color: theme.$main-color;
+            cursor: pointer;
+        }
+        .text {
+            font-size: 1.2rem;
+            flex: 1;
+            text-align: left;
+            color: theme.$gray-color;
+        }
+        .remove {
+            font-size: 1.5rem;
+            color: #dee2e6;
+            cursor: pointer;
+            width: 25px;
+            height: 21px;
+            display: none;
+            &:hover{
+                color: theme.$scarlet-color;
+            }
+        }
+        &:hover .remove{
+            display: initial;
         }
     }
 }
