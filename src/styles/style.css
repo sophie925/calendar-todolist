@@ -99,6 +99,9 @@ button {
 }
 .todo .header {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   width: 100%;
   padding: 0 20px;
   margin-bottom: 20px;
@@ -110,9 +113,69 @@ button {
   align-items: flex-start;
   font-size: 2rem;
   font-weight: 900;
+  margin-bottom: 10px;
 }
 .todo .header .day {
   font-size: 1rem;
   font-weight: 500;
   vertical-align: top;
+}
+.todo .body {
+  width: 100%;
+  padding: 0 20px;
+}
+.todo .create {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 0;
+  color: #495057;
+}
+.todo .create .add {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: #495057;
+  padding: 0;
+}
+.todo .create .plus {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+.todo .item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px 0;
+}
+.todo .item .check {
+  display: flex;
+  font-size: 1.5rem;
+  margin-right: 20px;
+  color: #3c5bda;
+  cursor: pointer;
+}
+.todo .item .text {
+  font-size: 1.2rem;
+  flex: 1;
+  text-align: left;
+  color: #495057;
+}
+.todo .item .remove {
+  font-size: 1.5rem;
+  color: #dee2e6;
+  cursor: pointer;
+  width: 25px;
+  height: 21px;
+  display: none;
+}
+.todo .item .remove:hover {
+  color: #ff6b6b;
+}
+.todo .item:hover .remove {
+  display: initial;
 }/*# sourceMappingURL=style.css.map */
