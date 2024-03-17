@@ -1,11 +1,13 @@
 import TodoHeader from "./TodoHeader";
-import TodoBody from "./TodoBody";
+import TodoList from "./TodoList";
+import TodoCreate from "./TodoCreate";
 
 const Todo = () => {
     return (
         <div className="todo">
             <TodoHeader />
-            <TodoBody />
+            <TodoList />
+            <TodoCreate />
         </div>
     );
 };

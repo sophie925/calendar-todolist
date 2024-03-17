@@ -4,9 +4,10 @@
 .todo {
     width: 100%;
 
-    .header {
+    &__header {
         @include common.flex-column(center, flex-start);
         width: 100%;
+        height: 5rem;
         padding: 0 20px;
         margin-bottom: 20px;
 
@@ -23,29 +24,49 @@
         }
     }
 
-    .body {
+    &__list {
         width: 100%;
         padding: 0 20px;
+        overflow-y: auto;
     }
 
-    .create {
+    &__create {
         @include common.flex-row(flex-start, center);
-        padding: 10px 0;
+
         color: theme.$gray-color;
+        padding: 50px 20px;
+
+        .input-box {
+            border: 1px solid theme.$lightgray-color;
+            border-radius: 5px;
+            padding: 10px;
+            margin-right: 15px;
+            font-size: 1rem;
+        }
 
         .add {
-            @include common.flex-row();
-            font-size: 1rem;
-            color: theme.$gray-color;
-            padding: 0;
-        }
-        .plus {
-            margin-right: 10px;
-            font-size: 1.2rem;
+            @include common.flex-center();
+            font-size: 1.5rem;
+            background: theme.$main-color;
+            color: theme.$white-color;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            transition: 0.125s all ease-in;
+            &:hover {
+                background: theme.$sub-color;
+            }
+            &.open {
+                background: theme.$red-color;
+                transform: rotate(45deg);
+                &:hover {
+                    background: theme.$lightred-color;
+                }
+            }
         }
     }
     
-    .item {
+    &__item {
         @include common.flex-row(flex-start, center);
         padding: 12px 0;
 
@@ -53,8 +74,12 @@
             display: flex;
             font-size: 1.5rem;
             margin-right: 20px;
-            color: theme.$main-color;
+            color: theme.$gray-color;
             cursor: pointer;
+            
+            &.done {
+                color: theme.$main-color;
+            }
         }
         .text {
             font-size: 1.2rem;
@@ -70,7 +95,7 @@
             height: 21px;
             display: none;
             &:hover{
-                color: theme.$scarlet-color;
+                color: theme.$red-color;
             }
         }
         &:hover .remove{

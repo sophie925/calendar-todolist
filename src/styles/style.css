@@ -97,16 +97,17 @@ button {
 .todo {
   width: 100%;
 }
-.todo .header {
+.todo__header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   width: 100%;
+  height: 5rem;
   padding: 0 20px;
   margin-bottom: 20px;
 }
-.todo .header .date {
+.todo__header .date {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -115,57 +116,77 @@ button {
   font-weight: 900;
   margin-bottom: 10px;
 }
-.todo .header .day {
+.todo__header .day {
   font-size: 1rem;
   font-weight: 500;
   vertical-align: top;
 }
-.todo .body {
+.todo__list {
   width: 100%;
   padding: 0 20px;
+  overflow-y: auto;
 }
-.todo .create {
+.todo__create {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: 10px 0;
   color: #495057;
+  padding: 50px 20px;
 }
-.todo .create .add {
+.todo__create .input-box {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 15px;
+  font-size: 1rem;
+}
+.todo__create .add {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
-  color: #495057;
-  padding: 0;
+  font-size: 1.5rem;
+  background: #3c5bda;
+  color: #ffffff;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  transition: 0.125s all ease-in;
 }
-.todo .create .plus {
-  margin-right: 10px;
-  font-size: 1.2rem;
+.todo__create .add:hover {
+  background: #91a7ff;
 }
-.todo .item {
+.todo__create .add.open {
+  background: #ff6b6b;
+  transform: rotate(45deg);
+}
+.todo__create .add.open:hover {
+  background: #ff8787;
+}
+.todo__item {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   padding: 12px 0;
 }
-.todo .item .check {
+.todo__item .check {
   display: flex;
   font-size: 1.5rem;
   margin-right: 20px;
-  color: #3c5bda;
+  color: #495057;
   cursor: pointer;
 }
-.todo .item .text {
+.todo__item .check.done {
+  color: #3c5bda;
+}
+.todo__item .text {
   font-size: 1.2rem;
   flex: 1;
   text-align: left;
   color: #495057;
 }
-.todo .item .remove {
+.todo__item .remove {
   font-size: 1.5rem;
   color: #dee2e6;
   cursor: pointer;
@@ -173,9 +194,9 @@ button {
   height: 21px;
   display: none;
 }
-.todo .item .remove:hover {
+.todo__item .remove:hover {
   color: #ff6b6b;
 }
-.todo .item:hover .remove {
+.todo__item:hover .remove {
   display: initial;
 }/*# sourceMappingURL=style.css.map */
