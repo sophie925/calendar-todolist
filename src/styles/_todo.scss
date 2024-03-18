@@ -3,13 +3,19 @@
 
 .todo {
     width: 100%;
+    max-width: 950px;
+    margin: 70px auto;
+
+    @media screen and (max-width: 768px) {
+        margin: 0 auto;
+    }
 
     &__header {
         @include common.flex-column(center, flex-start);
         width: 100%;
         height: 5rem;
         padding: 0 20px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
 
         .date {
             @include common.flex-row(center, flex-start);
@@ -21,6 +27,7 @@
             font-size: 1rem;
             font-weight: 500;
             vertical-align: top;
+            padding-left: 10px;
         }
     }
 
@@ -34,7 +41,7 @@
         @include common.flex-row(flex-start, center);
 
         color: theme.$gray-color;
-        padding: 50px 20px;
+        padding: 20px;
 
         .input-box {
             border: 1px solid theme.$lightgray-color;
@@ -49,8 +56,8 @@
             font-size: 1.5rem;
             background: theme.$main-color;
             color: theme.$white-color;
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             transition: 0.125s all ease-in;
             &:hover {
