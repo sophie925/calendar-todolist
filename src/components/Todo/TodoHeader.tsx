@@ -1,13 +1,10 @@
 import { useRecoilValue } from "recoil";
-import { todoSortState } from "../../recoil/selectors/todoSortState";
-import { dateState } from "../../recoil/atoms/date";
+import { todoSortState } from "../../recoil/selectors/todoSelector";
 import { format } from "date-fns";
 
-const TodoHeader = () => {
-    const dateList = useRecoilValue(dateState);
+const TodoHeader =  ({ selectDate }: { selectDate : Date}) => {
     const sortList = useRecoilValue(todoSortState);
-    const { selectDate } = dateList;
-
+    
     const date = format(selectDate, 'dd');
     const day = format(selectDate, 'EEE');
 

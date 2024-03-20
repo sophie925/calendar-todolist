@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
+import { addTodo } from "../../recoil/selectors/todoSelector";
 import { useSetRecoilState } from "recoil";
 import { todoListState } from "../../recoil/atoms/todos";
 
 let id = 0;
 const getId = () => id++;
 
-const TodoCreate = () => {
+const TodoCreate = ({ selectDate }: { selectDate : Date}) => {
     const setTodo = useSetRecoilState(todoListState);
     const [text, setText] = useState('');
     const [open, setOpen] = useState(false);
@@ -19,7 +20,12 @@ const TodoCreate = () => {
             alert('할 일을 입력해주세요.');
             return;
         }
-        setTodo(todos => todos.concat({ id : getId(), text, done: false }))
+        setTodo(todos => {
+            const todoItem = { id: getId(), text, done: false };
+            const updatedTodoList = [...todos, todoItem ];
+            addTodo(todoItem, selectDate);
+            return updatedTodoList;
+        });
         setText('');
         setOpen(false);
     };
