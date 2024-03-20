@@ -1,29 +1,35 @@
 import { MdCheckBoxOutlineBlank, MdCheckBox, MdDelete } from "react-icons/md";
 import { useSetRecoilState } from "recoil";
 import { TodoType, todoListState } from "../../recoil/atoms/todos";
+import { removeTodo, toggleTodo } from "../../recoil/selectors/todoSelector";
 
-const TodoItem = ({ data } : { data: TodoType }) => {
+const TodoItem = ({ data, selectDate } : { data: TodoType, selectDate : Date }) => {
     const setTodos = useSetRecoilState(todoListState);
+    const { id, text, done } = data;
 
-    const toggleTodo = () => {
+    const onToggle = () => {
         setTodos(todos =>
-            todos.map(todo =>
-                todo.id === data.id ? { ...data, done: !data.done } : todo
-            )
+            todos.map(todo => {
+                if(todo.id === id) {
+                    return  { ...data, done: !done };
+                }
+                toggleTodo(id, selectDate);
+                return todo;
+            })
         )
-    }
-
-    const removeTodo = () => {
-        setTodos(todos => todos.filter(todo => todo.id !== data.id));
+    };
+    const onRemove = () => {
+        setTodos(todos => todos.filter(todo => todo.id !== id));
+        removeTodo(id, selectDate);
     }
 
     return (
         <div className="todo__item">
-            <div className={`check ${data.done ? 'done' : ''}`} onClick={toggleTodo}>
-                {data.done ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+            <div className={`check ${done ? 'done' : ''}`} onClick={onToggle}>
+                {done ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
             </div>
-            <span className="text">{data.text}</span>
-            <div className="remove" onClick={removeTodo}>
+            <span className="text">{text}</span>
+            <div className="remove" onClick={onRemove}>
                 <MdDelete />
             </div>
         </div>
