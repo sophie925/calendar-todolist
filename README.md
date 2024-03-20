@@ -47,6 +47,7 @@ React, TypeScript, Recoil, Sass(Scss), date-fns
 - ✅ todolist 조회/추가/삭제 기능
 - ✅ 완료된 할 일 체크하기
 - ✅ 남은 할 일 표기하기
-- ✅ 오늘 날짜 표시하기
+- ✅ localStorage에 날짜별 데이터 관리
+- ✅ calendar에서 선택된 날짜에 연결된 todolist 조회
 
 <br>
