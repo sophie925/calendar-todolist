@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/calendar-todolist/static/css/main.a97b4a30.css",
-    "main.js": "/calendar-todolist/static/js/main.b272a5aa.js",
+    "main.js": "/calendar-todolist/static/js/main.270a64ef.js",
     "static/js/453.3a0d8492.chunk.js": "/calendar-todolist/static/js/453.3a0d8492.chunk.js",
     "static/media/NanumSquareRoundR.ttf": "/calendar-todolist/static/media/NanumSquareRoundR.f062cb52be3e9829834c.ttf",
     "static/media/NanumSquareRoundR.woff": "/calendar-todolist/static/media/NanumSquareRoundR.a333abd9dbdde59720d2.woff",
     "index.html": "/calendar-todolist/index.html",
     "main.a97b4a30.css.map": "/calendar-todolist/static/css/main.a97b4a30.css.map",
-    "main.b272a5aa.js.map": "/calendar-todolist/static/js/main.b272a5aa.js.map",
+    "main.270a64ef.js.map": "/calendar-todolist/static/js/main.270a64ef.js.map",
     "453.3a0d8492.chunk.js.map": "/calendar-todolist/static/js/453.3a0d8492.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a97b4a30.css",
-    "static/js/main.b272a5aa.js"
+    "static/js/main.270a64ef.js"
   ]
 }
