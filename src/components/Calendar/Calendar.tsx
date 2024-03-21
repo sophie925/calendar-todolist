@@ -5,7 +5,7 @@ import CalendarDays from "./CalendarDays";
 import CalendarBody from "./CalenderBody";
 import CalendarFooter from "./CalendarFooter";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { dateState } from "../../recoil/atoms/date";
+import { dateState, setDate } from "../../recoil/atoms/date";
 
 const Calendar = () => {
     const dateList = useRecoilValue(dateState);
@@ -25,7 +25,7 @@ const Calendar = () => {
 
     const onClickDate = (day: Date) => {
         checkToday(day);
-        setSelectDate({ ...dateList, selectDate: day });
+        setSelectDate({ ...dateList, selectDate: setDate(day) });
         if (isPast(day) && getMonth(day) < getMonth(currentMonth)) {
             prevMonth();
         } else if (isFuture(day) && getMonth(day) > getMonth(currentMonth)) {
@@ -35,7 +35,7 @@ const Calendar = () => {
 
     const onClickToday = () => {
         if (todayShow) {
-            setSelectDate({ ...dateList, selectDate: currDate });
+            setSelectDate({ ...dateList, selectDate: setDate(currDate) });
             checkToday(currentMonth);
             setCurrentMonth(currDate);
         }
