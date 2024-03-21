@@ -19,12 +19,15 @@ export const todoSortState = selector({
     key: 'todoSortState',
     get: ({ get }) => {
         const selectedDate = get(dateState).selectDate;
-        const todoListString = localStorage.getItem(new Date(selectedDate).toString());
+        const TODOS_KEY = new Date(selectedDate).toString();
+        const todoListString = localStorage.getItem(TODOS_KEY);
         let result = [];
+
         if (todoListString !== null) {
             const todoList = JSON.parse(todoListString);
             result = todoList.filter((todo: TodoType) => todo.done !== true);
         }
+
         return result;
     }
 });
@@ -40,12 +43,13 @@ export const saveTodoListToLocalStorage = (selectedDate: Date, todoList: TodoTyp
 export const addTodo = (todoItem: TodoType, selectedDate: Date) => {
     const TODOS_KEY = new Date(selectedDate).toString();
     const todoListString = localStorage.getItem(TODOS_KEY);
-
     let todoList = [];
+
     if (todoListString) {
         todoList = JSON.parse(todoListString);
     }
     todoList.push(todoItem);
+    
     saveTodoListToLocalStorage(selectedDate, todoList);
 };
 
@@ -62,8 +66,8 @@ export const toggleTodo = (todoId: number, selectedDate: Date) => {
             }
             return todo;
         });
+
         saveTodoListToLocalStorage(selectedDate, updatedTodoList);
-        
     }
 };
 
