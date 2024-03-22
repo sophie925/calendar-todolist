@@ -39,6 +39,19 @@ export const saveTodoListToLocalStorage = (selectedDate: Date, todoList: TodoTyp
     localStorage.setItem(TODOS_KEY, JSON.stringify(todoList));
 };
 
+// 할 일 id 생성하는 함수
+export const getId = (selectedDate: Date) => {
+    const TODOS_KEY = new Date(selectedDate).toString();
+    const todoListString = localStorage.getItem(TODOS_KEY);
+    let id = 0;
+    
+    if (todoListString) {
+        const todoList = JSON.parse(todoListString);;
+        id = todoList.length;
+    }
+    return id;
+}
+
 // 새로운 할 일을 추가하는 함수
 export const addTodo = (todoItem: TodoType, selectedDate: Date) => {
     const TODOS_KEY = new Date(selectedDate).toString();
