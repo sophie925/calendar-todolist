@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
-import { addTodo } from "../../recoil/selectors/todoSelector";
+import { addTodo, getId } from "../../recoil/selectors/todoSelector";
 import { useSetRecoilState } from "recoil";
 import { todoListState } from "../../recoil/atoms/todos";
-
-let id = 0;
-const getId = () => id++;
 
 const TodoCreate = ({ selectDate }: { selectDate : Date}) => {
     const setTodo = useSetRecoilState(todoListState);
@@ -21,7 +18,7 @@ const TodoCreate = ({ selectDate }: { selectDate : Date}) => {
             return;
         }
         setTodo(todos => {
-            const todoItem = { id: getId(), text, done: false };
+            const todoItem = { id: getId(selectDate), text, done: false };
             const updatedTodoList = [...todos, todoItem ];
             addTodo(todoItem, selectDate);
             return updatedTodoList;
