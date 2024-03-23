@@ -1,38 +1,46 @@
 import { useState } from "react";
-import { addMonths, getMonth, isFuture, isPast, isSameDay, subMonths } from "date-fns";
+import { addMonths, isSameDay, startOfMonth, subMonths } from "date-fns";
 import CalendarHeader from "./CalendarHeader";
 import CalendarDays from "./CalendarDays";
 import CalendarBody from "./CalenderBody";
 import CalendarFooter from "./CalendarFooter";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { dateState, setDate } from "../../recoil/atoms/date";
+import { getTodoListForMonth } from "../../recoil/selectors/todoSelector";
 
 const Calendar = () => {
     const dateList = useRecoilValue(dateState);
     const setSelectDate = useSetRecoilState(dateState);
+    const getTodos = useRecoilValue(getTodoListForMonth);
     const { currDate, selectDate } = dateList;
 
     const [currentMonth, setCurrentMonth] = useState<Date>(currDate);
     const [todayShow, setTodayShow] = useState<boolean>(false);
     
-    const prevMonth = () => {
-        setCurrentMonth(subMonths(currentMonth, 1));
+    // 이전 달 이동 시
+    const onClickPrevMonth = () => {
+        const prevMonth = subMonths(currentMonth, 1);
+        setCurrentMonth(prevMonth);
+        setSelectDate({ ...dateList, selectDate: setDate(startOfMonth(prevMonth)) });
+        checkToday(prevMonth);
     };
 
-    const nextMonth = () => {
-        setCurrentMonth(addMonths(currentMonth, 1));
+    // 다음 달 이동 시
+    const onClickNextMonth = () => {
+        const nextMonth = addMonths(currentMonth, 1);
+        setCurrentMonth(nextMonth);
+        setSelectDate({ ...dateList, selectDate: setDate(startOfMonth(nextMonth)) });
+        checkToday(nextMonth);
     };
 
-    const onClickDate = (day: Date) => {
-        checkToday(day);
-        setSelectDate({ ...dateList, selectDate: setDate(day) });
-        if (isPast(day) && getMonth(day) < getMonth(currentMonth)) {
-            prevMonth();
-        } else if (isFuture(day) && getMonth(day) > getMonth(currentMonth)) {
-            nextMonth();
-        }
+    // 캘린더에서 날짜 클릭 시
+    const onClickDate = (date: Date) => {
+        setCurrentMonth(date);
+        setSelectDate({ ...dateList, selectDate: setDate(date) });
+        checkToday(date);
     };
 
+    // 오늘 버튼 클릭 이벤트
     const onClickToday = () => {
         if (todayShow) {
             setSelectDate({ ...dateList, selectDate: setDate(currDate) });
@@ -41,6 +49,7 @@ const Calendar = () => {
         }
     };
 
+    // 오늘인지 확인하는 함수
     const checkToday = (date: Date) => {
         if (!isSameDay(currentMonth, date)) {
             setTodayShow(true);
@@ -53,13 +62,15 @@ const Calendar = () => {
         <div className="calendar">
             <CalendarHeader
                 currentMonth={currentMonth}
-                prevMonth={prevMonth}
-                nextMonth={nextMonth}
+                prevMonth={onClickPrevMonth}
+                nextMonth={onClickNextMonth}
             />
             <CalendarDays />
             <CalendarBody
                 currentMonth={currentMonth}
+                currDate={currDate}
                 selectedDate={selectDate}
+                todos={getTodos}
                 onClickDate={onClickDate}
             />
             <CalendarFooter

@@ -6,7 +6,7 @@
     max-width: 1200px;
     margin: auto;
     
-    .header {
+    &__header {
         @include common.flex-column();
 
         width: 100%;
@@ -49,7 +49,7 @@
         }
     }
 
-    .body {
+    &__body {
         width: 100%;
         padding: 0 20px;
 
@@ -60,31 +60,40 @@
         }
         .col {
             @include common.flex-column(flex-start);
-            & > span {
-                cursor: pointer;
-            }
+            padding-top: 5px;
+            cursor: pointer;
+            
             &.disabled {
                 color: theme.$lightgray-color;
             }
             &.selected > span{
-                background: linear-gradient(180deg, rgba(0,0,0,0) 60%, theme.$sub-color 40%);
-                width: 25px;
+                @include common.underline(theme.$lightgray-color, 25px);
+            }
+            &.today > span {
+                @include common.underline(theme.$sub-color, 25px);
+            }
+            & > .todo {
+                @include common.circle(theme.$orange-color, 5px, 5px, 50%);
+                
+                margin-top: 10px;
             }
         }
     }
-    .footer {
-        position: fixed;
-        bottom: 50px;
+
+    &__footer {
+        position: sticky;
         width: 100%;
-    }
-    .move-today {
-        background: theme.$main-color;
-        color: white;
-        padding: 8px;
-        border-radius: 30px;
-        width: 60px;
-        margin: auto;
-        cursor: pointer;
-        box-shadow: 1px 2px 3px rgb(102 102 102 / 50%);
+        height: 50px;
+
+        .move-today {
+            background: theme.$main-color;
+            color: white;
+            padding: 8px;
+            border-radius: 30px;
+            width: 60px;
+            margin: auto;
+            cursor: pointer;
+            box-shadow: 1px 2px 3px rgb(102 102 102 / 50%);
+        }
     }
 }

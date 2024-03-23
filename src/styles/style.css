@@ -13,7 +13,7 @@ button {
   max-width: 1200px;
   margin: auto;
 }
-.calendar .header {
+.calendar__header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,20 +23,20 @@ button {
   font-weight: 900;
   padding: 0 20px;
 }
-.calendar .header__content {
+.calendar__header__content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 50%;
 }
-.calendar .header__content svg {
+.calendar__header__content svg {
   font-size: 2rem;
 }
-.calendar .header__content .date {
+.calendar__header__content .date {
   font-size: 0.8rem;
 }
-.calendar .header__content .month {
+.calendar__header__content .month {
   font-size: 1.5rem;
   margin-right: 5px;
 }
@@ -55,37 +55,47 @@ button {
   font-size: 0.9rem;
   font-weight: 800;
 }
-.calendar .body {
+.calendar__body {
   width: 100%;
   padding: 0 20px;
 }
-.calendar .body .row {
+.calendar__body .row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   height: 100px;
 }
-.calendar .body .col {
+.calendar__body .col {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-}
-.calendar .body .col > span {
+  padding-top: 5px;
   cursor: pointer;
 }
-.calendar .body .col.disabled {
+.calendar__body .col.disabled {
   color: #c4c4c4;
 }
-.calendar .body .col.selected > span {
+.calendar__body .col.selected > span {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, #c4c4c4 40%);
+  width: 25px;
+}
+.calendar__body .col.today > span {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, #91a7ff 40%);
   width: 25px;
 }
-.calendar .footer {
-  position: fixed;
-  bottom: 50px;
-  width: 100%;
+.calendar__body .col > .todo {
+  background: #ffa500;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: 10px;
 }
-.calendar .move-today {
+.calendar__footer {
+  position: sticky;
+  width: 100%;
+  height: 50px;
+}
+.calendar__footer .move-today {
   background: #3c5bda;
   color: white;
   padding: 8px;
@@ -155,12 +165,12 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
   background: #3c5bda;
-  color: #ffffff;
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  font-size: 1.5rem;
+  color: #ffffff;
   transition: 0.125s all ease-in;
 }
 .todo__create .add:hover {

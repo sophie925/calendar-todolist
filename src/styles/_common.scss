@@ -34,3 +34,15 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr
 }
+
+@mixin circle($background, $width, $height, $border-radius) {
+    background: $background;
+    width: $width;
+    height: $height;
+    border-radius: $border-radius;
+}
+
+@mixin underline($color, $width) {
+    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, $color 40%);
+    width: $width;
+}

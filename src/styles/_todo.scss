@@ -53,13 +53,12 @@
 
         .add {
             @include common.flex-center();
+            @include common.circle(theme.$main-color, 30px, 30px, 50%);
+
             font-size: 1.5rem;
-            background: theme.$main-color;
             color: theme.$white-color;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
             transition: 0.125s all ease-in;
+
             &:hover {
                 background: theme.$sub-color;
             }

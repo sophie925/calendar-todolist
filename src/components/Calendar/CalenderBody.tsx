@@ -2,11 +2,13 @@ import { startOfMonth, startOfWeek, endOfMonth, endOfWeek, format, isSameMonth, 
 
 type DateType = {
     currentMonth: Date;
+    currDate: Date;
     selectedDate: Date;
+    todos: string[];
     onClickDate: (day: Date) => void;
 }
 
-const CalendarBody = ({ currentMonth, selectedDate, onClickDate }: DateType) => {
+const CalendarBody = ({ currentMonth, currDate, selectedDate, todos, onClickDate }: DateType) => {
     const monthStart = startOfMonth(currentMonth);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
@@ -23,16 +25,23 @@ const CalendarBody = ({ currentMonth, selectedDate, onClickDate }: DateType) => 
             let cloneDate = date;
             days.push(
                 <div
-                className={`col ${
-                    !isSameMonth(date, monthStart)
-                        ? 'disabled'
-                        : isSameDay(date, selectedDate)
-                        ? 'selected' : ''
-                }`}
-                key={i}
-                onClick={() => onClickDate(cloneDate)}
+                    key={i}
+                    className={`col ${
+                        isSameDay(date, currDate) ? 'today' : ''
+                    } ${
+                        !isSameMonth(date, monthStart)
+                            ? 'disabled'
+                            : isSameDay(date, selectedDate)
+                            ? 'selected' : ''
+                    }`}
+                    onClick={() => onClickDate(cloneDate)}
                 >
                     <span>{formattedDate}</span>
+                    {todos.map((todo) => {
+                        if (isSameDay(date, new Date(todo))) {
+                            return <div className="todo"></div>
+                        }
+                    } )}
                 </div>
             );
             date = addDays(date, 1);
@@ -43,7 +52,7 @@ const CalendarBody = ({ currentMonth, selectedDate, onClickDate }: DateType) => 
         days = [];
     }
 
-    return <div className="body">{rows}</div>;
+    return <div className="calendar__body">{rows}</div>;
 }
 
 export default CalendarBody;
