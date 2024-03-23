@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/calendar-todolist/static/css/main.a97b4a30.css",
-    "main.js": "/calendar-todolist/static/js/main.c18bbbff.js",
+    "main.css": "/calendar-todolist/static/css/main.0b379af2.css",
+    "main.js": "/calendar-todolist/static/js/main.86a4b222.js",
     "static/js/453.3a0d8492.chunk.js": "/calendar-todolist/static/js/453.3a0d8492.chunk.js",
     "static/media/NanumSquareRoundR.ttf": "/calendar-todolist/static/media/NanumSquareRoundR.f062cb52be3e9829834c.ttf",
     "static/media/NanumSquareRoundR.woff": "/calendar-todolist/static/media/NanumSquareRoundR.a333abd9dbdde59720d2.woff",
     "index.html": "/calendar-todolist/index.html",
-    "main.a97b4a30.css.map": "/calendar-todolist/static/css/main.a97b4a30.css.map",
-    "main.c18bbbff.js.map": "/calendar-todolist/static/js/main.c18bbbff.js.map",
+    "main.0b379af2.css.map": "/calendar-todolist/static/css/main.0b379af2.css.map",
+    "main.86a4b222.js.map": "/calendar-todolist/static/js/main.86a4b222.js.map",
     "453.3a0d8492.chunk.js.map": "/calendar-todolist/static/js/453.3a0d8492.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a97b4a30.css",
-    "static/js/main.c18bbbff.js"
+    "static/css/main.0b379af2.css",
+    "static/js/main.86a4b222.js"
   ]
 }
