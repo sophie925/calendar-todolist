@@ -32,6 +32,19 @@ export const todoSortState = selector({
     }
 });
 
+// 현재 달에 할 일 등록된 날짜 가져오는 함수
+export const getTodoListForMonth = selector({
+    key: 'getTodoListForMonth',
+    get: ({ get }) => {
+        const currentMonth = new Date(get(dateState).selectDate).getMonth() + 1;
+        const todoDateKeyList = Object.keys(localStorage);
+        let todoDateList = [];
+        todoDateList = todoDateKeyList.filter((date) => new Date(date).getMonth() + 1 === currentMonth);
+
+        return  todoDateList;
+    }
+});
+
 // 할 일 목록을 로컬 스토리지에 저장하는 함수
 export const saveTodoListToLocalStorage = (selectedDate: Date, todoList: TodoType[]) => {
     const TODOS_KEY = new Date(selectedDate).toString();

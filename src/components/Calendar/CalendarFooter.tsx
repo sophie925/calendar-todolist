@@ -5,7 +5,7 @@ type TodayType = {
 
 const CalendarFooter = ({ todayShow, onClickToday } : TodayType) => {
     return (
-        <div className="footer">
+        <div className="calendar__footer">
         {todayShow
             ? <div className="move-today" onClick={onClickToday}>오늘</div>
             : null

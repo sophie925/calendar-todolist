@@ -9,8 +9,8 @@ type MonthType = {
 
 const CalendarHeader = ({ currentMonth, prevMonth, nextMonth } : MonthType) => {
     return (
-        <div className="header">
-            <div className="header__content">
+        <div className="calendar__header">
+            <div className="calendar__header__content">
                 <button onClick={prevMonth}>
                     <IoIosArrowBack/>
                 </button>
