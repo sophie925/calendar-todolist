@@ -95,15 +95,24 @@ button {
   width: 100%;
   height: 50px;
 }
-.calendar__footer .move-today {
+.calendar__footer__btn {
   background: #3c5bda;
   color: white;
   padding: 8px;
   border-radius: 30px;
-  width: 60px;
+  width: 70px;
   margin: auto;
   cursor: pointer;
   box-shadow: 1px 2px 3px rgba(102, 102, 102, 0.5);
+}
+.calendar__footer__btn .today {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.calendar__footer__btn .today span {
+  margin: 0 4px;
 }
 
 .todo {
