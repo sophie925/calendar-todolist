@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addMonths, isSameDay, startOfMonth, subMonths } from "date-fns";
+import { addMonths, isPast, isSameDay, startOfMonth, subMonths } from "date-fns";
 import CalendarHeader from "./CalendarHeader";
 import CalendarDays from "./CalendarDays";
 import CalendarBody from "./CalenderBody";
@@ -16,6 +16,7 @@ const Calendar = () => {
 
     const [currentMonth, setCurrentMonth] = useState<Date>(currDate);
     const [todayShow, setTodayShow] = useState<boolean>(false);
+    const [isCheckTime, setIsCheckTime] = useState<boolean>(false);
     
     // 이전 달 이동 시
     const onClickPrevMonth = () => {
@@ -53,6 +54,7 @@ const Calendar = () => {
     const checkToday = (date: Date) => {
         if (!isSameDay(currentMonth, date)) {
             setTodayShow(true);
+            setIsCheckTime(isPast(date))
         } else {
             setTodayShow(false);
         }
@@ -75,6 +77,7 @@ const Calendar = () => {
             />
             <CalendarFooter
                 todayShow={todayShow}
+                isCheckTime={isCheckTime}
                 onClickToday={onClickToday}
             />
         </div>
