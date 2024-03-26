@@ -13,10 +13,10 @@ const TodoItem = ({ data, selectDate } : { data: TodoType, selectDate : Date }) 
                 if(todo.id === id) {
                     return  { ...data, done: !done };
                 }
-                toggleTodo(id, selectDate);
                 return todo;
             })
-        )
+        );
+        toggleTodo(id, selectDate);
     };
     const onRemove = () => {
         setTodos(todos => todos.filter(todo => todo.id !== id));
