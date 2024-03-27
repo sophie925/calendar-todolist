@@ -10,7 +10,7 @@ const TodoCreate = ({ selectDate }: { selectDate : Date}) => {
     const [open, setOpen] = useState(false);
 
     const onToggle = () => setOpen(!open);
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value);
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value.trim());
     const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         if (!text) {

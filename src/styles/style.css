@@ -209,6 +209,10 @@ button {
 .todo__item .check.done {
   color: #3c5bda;
 }
+.todo__item .check.done + .text {
+  color: #c4c4c4;
+  text-decoration: line-through;
+}
 .todo__item .text {
   font-size: 1.2rem;
   flex: 1;
