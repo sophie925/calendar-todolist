@@ -82,9 +82,14 @@
             margin-right: 20px;
             color: theme.$gray-color;
             cursor: pointer;
-            
+
             &.done {
                 color: theme.$main-color;
+
+                & + .text {
+                    color: theme.$lightgray-color;
+                    text-decoration: line-through;
+                }
             }
         }
         .text {

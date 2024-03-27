@@ -13,9 +13,9 @@ const CalendarFooter = ({ todayShow, isCheckTime, onClickToday } : TodayType) =>
             ? (
                 <div className="calendar__footer__btn" onClick={onClickToday}>
                     <div className="today">
-                        {isCheckTime ? null : <IoIosArrowBack />}
+                        {!isCheckTime && <IoIosArrowBack />}
                         <span>오늘</span>
-                        {isCheckTime ? <IoIosArrowForward /> : null}
+                        {isCheckTime && <IoIosArrowForward />}
                     </div>
                 </div>
                )

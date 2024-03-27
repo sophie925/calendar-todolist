@@ -23,9 +23,9 @@ export const todoSortState = selector({
         const todoListString = localStorage.getItem(TODOS_KEY);
         let result = [];
 
-        if (todoListString !== null) {
+        if (todoListString) {
             const todoList = JSON.parse(todoListString);
-            result = todoList.filter((todo: TodoType) => todo.done !== true);
+            result = todoList.filter((todo: TodoType) => !todo.done);
         }
 
         return result;
@@ -41,7 +41,7 @@ export const getTodoListForMonth = selector({
         let todoDateList = [];
         todoDateList = todoDateKeyList.filter((date) => new Date(date).getMonth() + 1 === currentMonth);
 
-        return  todoDateList;
+        return todoDateList;
     }
 });
 
@@ -84,7 +84,7 @@ export const toggleTodo = (todoId: number, selectedDate: Date) => {
     const TODOS_KEY = new Date(selectedDate).toString();
     const todoListString = localStorage.getItem(TODOS_KEY);
 
-    if (todoListString !== null) {
+    if (todoListString) {
         const todoList = JSON.parse(todoListString);
         const updatedTodoList = todoList.map((todo: TodoType) => {
             if (todo.id === todoId) {
@@ -106,6 +106,10 @@ export const removeTodo = (todoId: number, selectedDate: Date) => {
         const todoList = JSON.parse(todoListString);
         const updatedTodoList = todoList.filter((todo: TodoType) => todo.id !== todoId);
 
-        saveTodoListToLocalStorage(selectedDate, updatedTodoList);
+        if (updatedTodoList.length === 0) {
+            localStorage.removeItem(TODOS_KEY);
+        } else {
+            saveTodoListToLocalStorage(selectedDate, updatedTodoList);
+        }
     }
 };
