@@ -37,7 +37,10 @@ React,TypeScript, Recoil을 이용하여 캘린더와 투두리스트를 제작�
 <br>
 
 ## 사용 기술
-React, TypeScript, Recoil, Sass(Scss), date-fns
+- React, TypeScript
+- Recoil
+- Sass(Scss)
+- date-fns
 
 <br>
 
@@ -49,5 +52,6 @@ React, TypeScript, Recoil, Sass(Scss), date-fns
 - ✅ 남은 할 일 표기하기
 - ✅ localStorage에 날짜별 데이터 관리
 - ✅ calendar에서 선택된 날짜에 연결된 todolist 조회
+- ✅ calendar에 할 일 있는 경우 표시
 
 <br>
