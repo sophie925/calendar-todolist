@@ -45,14 +45,14 @@ const Calendar = () => {
     const onClickToday = () => {
         if (todayShow) {
             setSelectDate({ ...dateList, selectDate: setDate(currDate) });
-            checkToday(currentMonth);
+            checkToday(currDate);
             setCurrentMonth(currDate);
         }
     };
 
     // 오늘인지 확인하는 함수
     const checkToday = (date: Date) => {
-        if (!isSameDay(currentMonth, date)) {
+        if (!isSameDay(currDate, date)) {
             setTodayShow(true);
             setIsCheckTime(isPast(date))
         } else {
