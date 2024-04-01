@@ -1,6 +1,6 @@
 import { startOfMonth, startOfWeek, endOfMonth, endOfWeek, format, isSameMonth, isSameDay, addDays } from "date-fns";
 
-type DateType = {
+type PropsType = {
     currentMonth: Date;
     currDate: Date;
     selectedDate: Date;
@@ -8,7 +8,7 @@ type DateType = {
     onClickDate: (day: Date) => void;
 }
 
-const CalendarBody = ({ currentMonth, currDate, selectedDate, todos, onClickDate }: DateType) => {
+const CalendarBody = ({ currentMonth, currDate, selectedDate, todos, onClickDate }: PropsType) => {
     const monthStart = startOfMonth(currentMonth);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);

@@ -1,12 +1,12 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-type TodayType = {
+type PropsType = {
     todayShow: boolean;
     isCheckTime: boolean;
     onClickToday: () => void;
 }
 
-const CalendarFooter = ({ todayShow, isCheckTime, onClickToday } : TodayType) => {
+const CalendarFooter = ({ todayShow, isCheckTime, onClickToday } : PropsType) => {
     return (
         <div className="calendar__footer">
         {todayShow

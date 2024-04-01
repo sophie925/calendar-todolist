@@ -1,9 +1,9 @@
 import { selector } from "recoil";
-import { TodoType } from "../atoms/todos";
+import { ITodo } from "../atoms/todos";
 import { dateState } from "../atoms/date";
 
 // 선택된 날짜에 따라 할 일 목록을 가져오는 selector
-export const todoListBySelectedDate = selector<TodoType[]>({
+export const todoListBySelectedDate = selector<ITodo[]>({
     key: 'todoListBySelectedDate',
     get: ({ get }) => {
         const selectedDate = get(dateState).selectDate.toString();
@@ -25,7 +25,7 @@ export const todoSortState = selector({
 
         if (todoListString) {
             const todoList = JSON.parse(todoListString);
-            result = todoList.filter((todo: TodoType) => !todo.done);
+            result = todoList.filter((todo: ITodo) => !todo.done);
         }
 
         return result;
@@ -46,7 +46,7 @@ export const getTodoListForMonth = selector({
 });
 
 // 할 일 목록을 로컬 스토리지에 저장하는 함수
-export const saveTodoListToLocalStorage = (selectedDate: Date, todoList: TodoType[]) => {
+export const saveTodoListToLocalStorage = (selectedDate: Date, todoList: ITodo[]) => {
     const TODOS_KEY = new Date(selectedDate).toString();
     
     localStorage.setItem(TODOS_KEY, JSON.stringify(todoList));
@@ -66,7 +66,7 @@ export const getId = (selectedDate: Date) => {
 }
 
 // 새로운 할 일을 추가하는 함수
-export const addTodo = (todoItem: TodoType, selectedDate: Date) => {
+export const addTodo = (todoItem: ITodo, selectedDate: Date) => {
     const TODOS_KEY = new Date(selectedDate).toString();
     const todoListString = localStorage.getItem(TODOS_KEY);
     let todoList = [];
@@ -86,7 +86,7 @@ export const toggleTodo = (todoId: number, selectedDate: Date) => {
 
     if (todoListString) {
         const todoList = JSON.parse(todoListString);
-        const updatedTodoList = todoList.map((todo: TodoType) => {
+        const updatedTodoList = todoList.map((todo: ITodo) => {
             if (todo.id === todoId) {
                 return { ...todo, done: !todo.done }
             }
@@ -104,7 +104,7 @@ export const removeTodo = (todoId: number, selectedDate: Date) => {
 
     if (todoListString !== null) {
         const todoList = JSON.parse(todoListString);
-        const updatedTodoList = todoList.filter((todo: TodoType) => todo.id !== todoId);
+        const updatedTodoList = todoList.filter((todo: ITodo) => todo.id !== todoId);
 
         if (updatedTodoList.length === 0) {
             localStorage.removeItem(TODOS_KEY);
