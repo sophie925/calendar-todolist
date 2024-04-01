@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export interface dateType {
+export interface IDate {
     currDate: Date;
     selectDate: Date;
 }
@@ -14,7 +14,7 @@ export const setDate = (d: Date): Date => {
     return new Date(newDate);
 }
 
-export const dateState = atom<dateType>({
+export const dateState = atom<IDate>({
     key: 'dateState',
     default: {
         currDate: setDate(new Date()),

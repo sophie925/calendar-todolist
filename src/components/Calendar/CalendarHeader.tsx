@@ -1,13 +1,13 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { format } from 'date-fns';
 
-type MonthType = {
+type PropsType = {
     currentMonth : Date;
     prevMonth: React.MouseEventHandler<HTMLButtonElement>;
     nextMonth: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const CalendarHeader = ({ currentMonth, prevMonth, nextMonth } : MonthType) => {
+const CalendarHeader = ({ currentMonth, prevMonth, nextMonth } : PropsType) => {
     return (
         <div className="calendar__header">
             <div className="calendar__header__content">

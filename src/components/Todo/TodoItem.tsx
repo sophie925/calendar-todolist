@@ -1,9 +1,14 @@
 import { MdCheckBoxOutlineBlank, MdCheckBox, MdDelete } from "react-icons/md";
 import { useSetRecoilState } from "recoil";
-import { TodoType, todoListState } from "../../recoil/atoms/todos";
+import { ITodo, todoListState } from "../../recoil/atoms/todos";
 import { removeTodo, toggleTodo } from "../../recoil/selectors/todoSelector";
 
-const TodoItem = ({ data, selectDate } : { data: TodoType, selectDate : Date }) => {
+type PropsType = {
+    data: ITodo,
+    selectDate : Date
+}
+
+const TodoItem = ({ data, selectDate } : PropsType) => {
     const setTodos = useSetRecoilState(todoListState);
     const { id, text, done } = data;
 
