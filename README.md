@@ -2,8 +2,8 @@
 
 React,TypeScript, Recoil을 이용하여 캘린더와 투두리스트를 제작하였습니다.
 
-<img src="https://github.com/sophie925/calendar-todolist/assets/89984685/73a44bcb-59ba-4962-a412-1b3cf0911e51" width="70%" />
-<img src="https://github.com/sophie925/calendar-todolist/assets/89984685/d8a8e9b0-1e2f-4348-9c3d-2222b876aa08" width="25%" />
+<img src="https://github.com/sophie925/calendar-todolist/assets/89984685/e48e0e0a-7ddd-4f21-ab3b-9366e4cbb530" width="70%" />
+<img src="https://github.com/sophie925/calendar-todolist/assets/89984685/1be87a04-2247-4fb8-8cbb-9149e260d64b" width="25%" />
 
 <br><br>
 
