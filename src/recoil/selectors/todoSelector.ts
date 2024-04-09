@@ -1,5 +1,5 @@
 import { selector } from "recoil";
-import { ITodo } from "../atoms/todos";
+import { ITodo, todoListState } from "../atoms/todos";
 import { dateState } from "../atoms/date";
 
 // 선택된 날짜에 따라 할 일 목록을 가져오는 selector
@@ -15,25 +15,18 @@ export const todoListBySelectedDate = selector<ITodo[]>({
 });
 
 // 남은 할 일 개수를 세는 함수
-export const todoSortState = selector({
+export const todoSortState = selector<ITodo[]>({
     key: 'todoSortState',
     get: ({ get }) => {
-        const selectedDate = get(dateState).selectDate;
-        const TODOS_KEY = new Date(selectedDate).toString();
-        const todoListString = localStorage.getItem(TODOS_KEY);
-        let result = [];
-
-        if (todoListString) {
-            const todoList = JSON.parse(todoListString);
-            result = todoList.filter((todo: ITodo) => !todo.done);
-        }
+        const todoData = get(todoListState);
+        let result = todoData.filter(todo => !todo.done);
 
         return result;
     }
 });
 
 // 현재 달에 할 일 등록된 날짜 가져오는 함수
-export const getTodoListForMonth = selector({
+export const getTodoListForMonth = selector<string[]>({
     key: 'getTodoListForMonth',
     get: ({ get }) => {
         const currentMonth = new Date(get(dateState).selectDate).getMonth() + 1;
